@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { selectDetail } from '../../services/bobs-burgers';
 import DetailCard from '../../components/DetailCard/DetailCard';
+import { useHistory } from 'react-router-dom';
 
 export default function Detail() {
   const [loading, setLoading] = useState(true);
-  const { select, id } = useParams();
   const [selected, setSelected] = useState([]);
+
+  const { select, id } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,7 +20,9 @@ export default function Detail() {
     fetchData();
   }, [select, id]);
 
-  console.log(selected);
+  const handleClick = () => {
+    history.push(`/${select}`);
+  };
 
   return (
     <div>
@@ -26,6 +31,7 @@ export default function Detail() {
       ) : (
         <>
           <DetailCard selected={selected} />
+          <button onClick={handleClick}>Back to {select}</button>
         </>
       )}
     </div>
