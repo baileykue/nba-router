@@ -1,7 +1,7 @@
 import React from 'react';
-import './DetailCard.css'
+import styles from './DetailCard.css';
 
-export default function Detail({ selected }) {
+export default function Detail({ selected, select, handleClick }) {
   const {
     id,
     image,
@@ -18,41 +18,58 @@ export default function Detail({ selected }) {
   } = selected;
 
   return (
-    <div>
-      <h1>{name}</h1>
-      {image && <img src={image} />}
+    <div className={styles.card}>
+      <div className={styles.detail_header}>
+        <h1>{name}</h1>
+        {image && <img src={image} className={styles.detail_image} />}
+        {!image && (
+          <img
+            src={
+              'https://townsquare.media/site/518/files/2017/01/bobs-burgers.jpg?w=980&q=75'
+            }
+            className={styles.detail_image}
+          />
+        )}
+      </div>
 
-      {/* store next door */}
-      {image && season && (
-        <p>
-          Appeared in season {season}, episode {id}.
-        </p>
-      )}
+      <div className={styles.detail_desc}>
+        {/* store next door */}
+        {image && season && (
+          <p>
+            Appeared in season {season}, episode {id}.
+          </p>
+        )}
 
-      {/* episodes */}
-      {productionCode && (
-        <p>
-          Appeared in season {season}, episode {episode}.
-        </p>
-      )}
-      {airDate && (
-        <p>
-          This episode first aired on {airDate}, and had {totalViewers} viewers.
-        </p>
-      )}
+        {/* episodes */}
+        {productionCode && (
+          <p>
+            Appeared in season {season}, episode {episode}.
+          </p>
+        )}
+        {airDate && (
+          <p>
+            This episode first aired on {airDate}, and had {totalViewers}{' '}
+            viewers.
+          </p>
+        )}
 
-      {/* characters */}
-      {firstEpisode && (
-        <p>
-          {name} first appeared in the {firstEpisode} episode.
-        </p>
-      )}
-      {hairColor && (
-        <p>
-          They identify as {gender}, and have {hairColor} hair.
-        </p>
-      )}
-      {occupation && <p>They are a/an {occupation}.</p>}
+        {/* characters */}
+        {firstEpisode && (
+          <p>
+            {name} first appeared in the {firstEpisode} episode.
+          </p>
+        )}
+        {hairColor && (
+          <p>
+            They identify as {gender}, and have {hairColor} hair.
+          </p>
+        )}
+        {occupation && <p>They are a/an {occupation}.</p>}
+
+        <button onClick={handleClick} className={styles.back_button}>
+          Back to {select}
+        </button>
+      </div>
     </div>
   );
 }

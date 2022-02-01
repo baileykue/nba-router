@@ -30,8 +30,11 @@ export default function Detail() {
         <h1>Loading...</h1>
       ) : (
         <>
-          <DetailCard selected={selected} />
-          <button onClick={handleClick}>Back to {select}</button>
+          <DetailCard
+            selected={selected}
+            handleClick={handleClick}
+            select={select}
+          />
         </>
       )}
     </div>

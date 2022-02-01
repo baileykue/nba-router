@@ -1,0 +1,32 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail_header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid black;
+}
+
+.detail_desc {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  border: 2px solid black;
+}
+
+.detail_image {
+  width: 45vw;
+  height: 65vh;
+  object-fit: contain;
+}
+
+.back_button {
+  width: 125px;
+  background-color: transparent;
+  border-radius: 15px;
+}
