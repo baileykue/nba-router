@@ -1,0 +1,15 @@
+.list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.link {
+  width: 20vw;
+}
+
+.list_image {
+  height: 25vh;
+  width: 15vw;
+  object-fit: contain;
+}

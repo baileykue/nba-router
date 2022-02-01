@@ -1,4 +1,5 @@
 import React from 'react';
+import './DetailCard.css'
 
 export default function Detail({ selected }) {
   const {
