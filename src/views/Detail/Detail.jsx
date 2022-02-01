@@ -25,7 +25,7 @@ export default function Detail() {
         <h1>Loading...</h1>
       ) : (
         <>
-          <DetailCard selected={selected} select={select} />
+          <DetailCard selected={selected} />
         </>
       )}
     </div>
