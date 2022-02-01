@@ -17,15 +17,13 @@ export default function Home() {
     fetchData();
   }, [select]);
 
-  console.log(selected);
-
   return (
     <div>
       {loading ? (
         <h1>Loading...</h1>
       ) : (
         <>
-          <List selected={selected} />
+          <List selected={selected} select={select} />
         </>
       )}
     </div>
