@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Nav from './components/Nav/Nav';
 import Home from './views/Home/Home';
 import Detail from './views/Detail/Detail';
@@ -10,6 +10,9 @@ export default function App() {
       <BrowserRouter>
         <Nav />
         <Switch>
+          <Route exact path="/">
+            <Redirect to="/characters" />
+          </Route>
           <Route path="/:select/:id">
             <Detail />
           </Route>
