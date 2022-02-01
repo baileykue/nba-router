@@ -1,12 +1,12 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Nav from './views/Nav/Nav';
+import Nav from './components/Nav/Nav';
 import Home from './views/Home/Home';
 import Detail from './views/Detail/Detail';
-import './App.css';
+import styles from './App.css';
 
 export default function App() {
   return (
-    <div>
+    <div className={styles.app}>
       <BrowserRouter>
         <Nav />
         <Switch>
