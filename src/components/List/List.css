@@ -1,0 +1,35 @@
+.list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.link {
+  max-width: 20vw;
+  max-height: 50vh;
+  text-align: center;
+  padding: 10px;
+}
+
+.link:hover {
+  font-size: large;
+}
+
+.list_image {
+  height: 25vh;
+  width: 15vw;
+  object-fit: contain;
+  filter: drop-shadow(3px 3px 3px rgb(34, 34, 34));
+}
+
+.link :link {
+  text-decoration: none;
+  color: black;
+}
+
+.link :visited {
+  color: grey;
+}
