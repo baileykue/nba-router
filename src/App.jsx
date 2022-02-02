@@ -9,6 +9,7 @@ export default function App() {
     <div className={styles.app}>
       <BrowserRouter>
         <Nav />
+        <h1>Welcome Bob's Burgers Fans</h1>
         <Switch>
           <Route exact path="/">
             <Redirect to="/characters" />

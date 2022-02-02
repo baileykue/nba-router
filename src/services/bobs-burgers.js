@@ -1,6 +1,6 @@
 export async function getSelected(select) {
   const response = await fetch(
-    `https://bobsburgers-api.herokuapp.com/${select}?limit=25`
+    `https://bobsburgers-api.herokuapp.com/${select}?sortBy=name&OrderBy=desc&limit=25`
   );
 
   const data = await response.json();

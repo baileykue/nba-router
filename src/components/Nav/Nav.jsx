@@ -8,6 +8,7 @@ export default function Nav() {
       <NavLink to="/characters">Characters</NavLink>
       <NavLink to="/episodes">Episodes</NavLink>
       <NavLink to="/storeNextDoor">Store Next Door</NavLink>
+      <NavLink to="/pestControlTruck">Pest Control Truck</NavLink>
     </header>
   );
 }
