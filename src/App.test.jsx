@@ -7,7 +7,6 @@ import {
 import App from './App';
 
 test('header and  banner loading properly', async () => {
-  //const select = 'characters';
   render(<App />);
 
   const loading = screen.getByText(/loading/i);
