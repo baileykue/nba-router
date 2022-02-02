@@ -5,6 +5,11 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+  background: linear-gradient(
+    0.25turn,
+    rgba(0, 255, 0, 0.6),
+    rgba(255, 192, 203, 0.6),
+    rgba(255, 255, 0, 0.6)
+  );
   gap: 50px;
 }

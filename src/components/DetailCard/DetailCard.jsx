@@ -20,7 +20,7 @@ export default function Detail({ selected, select, handleClick }) {
   return (
     <div className={styles.card}>
       <div className={styles.detail_header}>
-        <h1>{name}</h1>
+        <h2>{name}</h2>
         {image && <img src={image} className={styles.detail_image} />}
         {!image && (
           <img
@@ -33,7 +33,8 @@ export default function Detail({ selected, select, handleClick }) {
       </div>
 
       <div className={styles.detail_desc}>
-        {/* store next door */}
+        {/* store next door, 
+        pest control truck */}
         {image && season && (
           <p>
             Appeared in season {season}, episode {id}.
@@ -67,7 +68,7 @@ export default function Detail({ selected, select, handleClick }) {
         {occupation && <p>They are a/an {occupation}.</p>}
 
         <button onClick={handleClick} className={styles.back_button}>
-          Back to {select}
+          Back
         </button>
       </div>
     </div>

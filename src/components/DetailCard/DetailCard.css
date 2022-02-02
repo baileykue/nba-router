@@ -3,30 +3,41 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  gap: 35px;
 }
 
 .detail_header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid black;
+  width: 45vw;
+  height: 75vh;
 }
 
 .detail_desc {
   display: flex;
   flex-direction: column;
   margin: 5px;
-  border: 2px solid black;
 }
 
 .detail_image {
-  width: 45vw;
-  height: 65vh;
+  width: 35vw;
+  height: 55vh;
   object-fit: contain;
+  filter: drop-shadow(3px 3px 3px rgb(34, 34, 34));
 }
 
 .back_button {
-  width: 125px;
+  width: 75px;
   background-color: transparent;
   border-radius: 15px;
+}
+
+.back_button:hover {
+  background: linear-gradient(
+    0.25turn,
+    rgba(0, 255, 0, 0.6),
+    rgba(255, 192, 203, 0.6),
+    rgba(255, 255, 0, 0.6)
+  );
 }
