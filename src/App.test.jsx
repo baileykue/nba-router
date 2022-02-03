@@ -8,10 +8,10 @@ import {
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
-import { MemoryRouter, Route } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 
 import App from './App';
-import { charData, epData, storData, pestData } from './utils/test-data';
+import { charData } from './utils/test-data';
 
 const server = setupServer(
   rest.get(
