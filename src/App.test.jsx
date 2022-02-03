@@ -1,13 +1,37 @@
 import {
+  findByRole,
   render,
   screen,
   waitForElementToBeRemoved,
 } from '@testing-library/react';
 
+import { rest } from 'msw';
+import { setupServer } from 'msw/node';
+
+import { MemoryRouter, Route } from 'react-router-dom';
+
 import App from './App';
+import { charData, epData, storData, pestData } from './utils/test-data';
+
+const server = setupServer(
+  rest.get(
+    'https://bobsburgers-api.herokuapp.com/characters?sortBy=name&OrderBy=desc&limit=25',
+    (req, res, ctx) => {
+      return res(ctx.json(charData));
+    }
+  )
+);
+
+beforeAll(() => server.listen());
+
+afterAll(() => server.close());
 
 test('header and  banner loading properly', async () => {
-  render(<App />);
+  render(
+    <MemoryRouter initialEntries={['/']}>
+      <App />
+    </MemoryRouter>
+  );
 
   const loading = screen.getByText(/loading/i);
   expect(loading).toBeInTheDocument();
@@ -22,4 +46,16 @@ test('header and  banner loading properly', async () => {
   expect(header).toBeInTheDocument();
   expect(banner).toBeInTheDocument();
   expect(bannerText).toBeInTheDocument();
+});
+
+test('the 25 characters should display on the page', async () => {
+  render(
+    <MemoryRouter initialEntries={['/']}>
+      <App />
+    </MemoryRouter>
+  );
+
+  const charList = await screen.findAllByRole('img');
+
+  expect(charList).toHaveLength(25);
 });
