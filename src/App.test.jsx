@@ -57,3 +57,5 @@ test('the 25 characters should display on the page', async () => {
   const charList = await screen.findAllByRole('img');
   expect(charList).toHaveLength(25);
 });
+
+test.only('expect new list of episodes to render after user click', async () => {});

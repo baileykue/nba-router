@@ -4,6 +4,7 @@ import {
   screen,
   waitForElementToBeRemoved,
 } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
@@ -11,6 +12,7 @@ import { setupServer } from 'msw/node';
 import { MemoryRouter, Route } from 'react-router-dom';
 
 import Detail from './Detail';
+import Home from '../Home/Home';
 import { charData } from '../../utils/test-data';
 
 const server = setupServer(
@@ -26,7 +28,7 @@ beforeAll(() => server.listen());
 
 afterAll(() => server.close());
 
-test.only('checking for image, name, detail, and button to be on the page', async () => {
+test('checking for image, name, detail, and button to be on the page', async () => {
   render(
     <MemoryRouter initialEntries={['/characters/493']}>
       <Route path="/:select/:id">
@@ -54,4 +56,29 @@ test.only('checking for image, name, detail, and button to be on the page', asyn
 
   const button = await screen.findByRole('button', { name: /back/i });
   expect(button).toBeInTheDocument();
+});
+
+test('testing to make sure the button takes you back to the main page', async () => {
+  render(
+    <MemoryRouter initialEntries={['/characters/493']}>
+      <Route path="/:select/:id">
+        <Detail />
+      </Route>
+    </MemoryRouter>
+  );
+
+  const button = await screen.findByRole('button', { name: /back/i });
+  expect(button).toBeInTheDocument();
+
+  userEvent.click(button);
+  render(
+    <MemoryRouter initialEntries={['/characters']}>
+      <Route path="/:select">
+        <Home />
+      </Route>
+    </MemoryRouter>
+  );
+
+  const list = await screen.findAllByRole('img');
+  expect(list).toHaveLength(25);
 });

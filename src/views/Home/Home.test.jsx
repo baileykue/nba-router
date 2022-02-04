@@ -107,7 +107,7 @@ test('checks for three random stores nest door', async () => {
   expect(storList).toHaveLength(25);
 });
 
-test.only('checks for three random pest control trucks', async () => {
+test('checks for three random pest control trucks', async () => {
   server.use(
     rest.get(
       'https://bobsburgers-api.herokuapp.com/pestControlTruck',
