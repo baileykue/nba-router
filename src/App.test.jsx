@@ -1,5 +1,4 @@
 import {
-  findByRole,
   render,
   screen,
   waitForElementToBeRemoved,
@@ -15,7 +14,7 @@ import { charData } from './utils/test-data';
 
 const server = setupServer(
   rest.get(
-    'https://bobsburgers-api.herokuapp.com/characters?sortBy=name&OrderBy=desc&limit=25',
+    'https://bobsburgers-api.herokuapp.com/characters',
     (req, res, ctx) => {
       return res(ctx.json(charData));
     }
@@ -56,6 +55,5 @@ test('the 25 characters should display on the page', async () => {
   );
 
   const charList = await screen.findAllByRole('img');
-
   expect(charList).toHaveLength(25);
 });
