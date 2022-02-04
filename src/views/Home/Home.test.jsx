@@ -1,4 +1,4 @@
-import { findByRole, findByText, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
@@ -107,7 +107,7 @@ test('checks for three random stores nest door', async () => {
   expect(storList).toHaveLength(25);
 });
 
-test.only('checks for three random stores nest door', async () => {
+test.only('checks for three random pest control trucks', async () => {
   server.use(
     rest.get(
       'https://bobsburgers-api.herokuapp.com/pestControlTruck',
@@ -134,6 +134,6 @@ test.only('checks for three random stores nest door', async () => {
   const ratsby = await screen.findByText(/the great ratsby exterminators/i);
   expect(ratsby).toBeInTheDocument();
 
-  const storList = await screen.findAllByRole('img');
-  expect(storList).toHaveLength(25);
+  const pestList = await screen.findAllByRole('img');
+  expect(pestList).toHaveLength(25);
 });

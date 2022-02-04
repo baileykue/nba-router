@@ -28,6 +28,7 @@ export default function Detail({ selected, select, handleClick }) {
               'https://townsquare.media/site/518/files/2017/01/bobs-burgers.jpg?w=980&q=75'
             }
             className={styles.detail_image}
+            alt={name}
           />
         )}
       </div>
