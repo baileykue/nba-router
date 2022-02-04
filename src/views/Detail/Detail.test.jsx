@@ -1,9 +1,4 @@
-import {
-  findByRole,
-  render,
-  screen,
-  waitForElementToBeRemoved,
-} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { rest } from 'msw';
@@ -13,13 +8,13 @@ import { MemoryRouter, Route } from 'react-router-dom';
 
 import Detail from './Detail';
 import Home from '../Home/Home';
-import { charData } from '../../utils/test-data';
+import { charDetail } from '../../utils/test-data';
 
 const server = setupServer(
   rest.get(
-    'https://bobsburgers-api.herokuapp.com/characters',
+    'https://bobsburgers-api.herokuapp.com/characters/493',
     (req, res, ctx) => {
-      return res(ctx.json(charData));
+      return res(ctx.json(charDetail));
     }
   )
 );

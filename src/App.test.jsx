@@ -11,7 +11,6 @@ import { setupServer } from 'msw/node';
 import { MemoryRouter, Route } from 'react-router-dom';
 
 import App from './App';
-import Home from './views/Home/Home';
 import { charData, epData } from './utils/test-data';
 
 const server = setupServer(
@@ -60,7 +59,7 @@ test('the 25 characters should display on the page', async () => {
   expect(charList).toHaveLength(25);
 });
 
-test.only('expect new list of episodes to render after user click', async () => {
+test('expect new list of episodes to render after user click', async () => {
   render(
     <MemoryRouter initialEntries={['/']}>
       <App />
@@ -70,14 +69,6 @@ test.only('expect new list of episodes to render after user click', async () => 
   const episodes = await screen.findByRole('link', { name: /episodes/i });
   expect(episodes).toBeInTheDocument();
   userEvent.click(episodes);
-
-  render(
-    <MemoryRouter initialEntries={['/episodes']}>
-      <Route path="/:select">
-        <Home />
-      </Route>
-    </MemoryRouter>
-  );
 
   server.use(
     rest.get(

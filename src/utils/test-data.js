@@ -972,3 +972,15 @@ export const pestData = [
     url: 'https://bobsburgers-api.herokuapp.com/pestControlTruck/100',
   },
 ];
+
+export const charDetail = {
+  id: 493,
+  name: 'Warren Fitzgerald',
+  image: 'https://bobsburgers-api.herokuapp.com/images/characters/493.jpg',
+  gender: 'Male',
+  hairColor: 'Brown',
+  occupation: 'Businessman',
+  firstEpisode: '"Pro Tiki/Con Tiki"',
+  voicedBy: 'Chris Parnell',
+  url: 'https://bobsburgers-api.herokuapp.com/characters/493',
+};
