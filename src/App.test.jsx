@@ -3,14 +3,16 @@ import {
   screen,
   waitForElementToBeRemoved,
 } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Route } from 'react-router-dom';
 
 import App from './App';
-import { charData } from './utils/test-data';
+import Home from './views/Home/Home';
+import { charData, epData } from './utils/test-data';
 
 const server = setupServer(
   rest.get(
@@ -58,4 +60,37 @@ test('the 25 characters should display on the page', async () => {
   expect(charList).toHaveLength(25);
 });
 
-test.only('expect new list of episodes to render after user click', async () => {});
+test.only('expect new list of episodes to render after user click', async () => {
+  render(
+    <MemoryRouter initialEntries={['/']}>
+      <App />
+    </MemoryRouter>
+  );
+
+  const episodes = await screen.findByRole('link', { name: /episodes/i });
+  expect(episodes).toBeInTheDocument();
+  userEvent.click(episodes);
+
+  render(
+    <MemoryRouter initialEntries={['/episodes']}>
+      <Route path="/:select">
+        <Home />
+      </Route>
+    </MemoryRouter>
+  );
+
+  server.use(
+    rest.get(
+      'https://bobsburgers-api.herokuapp.com/episodes',
+      (req, res, ctx) => {
+        return res(ctx.json(epData));
+      }
+    )
+  );
+
+  const firstEp = await screen.findByText(/zero larp thirty/i);
+  expect(firstEp).toBeInTheDocument();
+
+  const list = await screen.findAllByRole('img');
+  expect(list).toHaveLength(25);
+});
